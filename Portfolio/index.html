@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kopano Segole | Portfolio</title>
+  <style>
+    /* Variables for Light/Dark Theme */
+    :root {
+      --bg-color: #f8f9fb;
+      --text-color: #333;
+      --card-bg: #fff;
+      --nav-bg: #222;
+      --accent: #00adb5;
+    }
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #eee;
+      --card-bg: #1e1e1e;
+      --nav-bg: #000;
+      --accent: #00adb5;
+    }
+
+    /* Global */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: background 0.3s, color 0.3s;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: 0.3s;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    
+    /* Navbar */
+    nav {
+      position: fixed;
+      width: 100%;
+      background: var(--nav-bg);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10%;
+      z-index: 1000;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    .toggle-btn {
+      cursor: pointer;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+    .toggle-btn:hover {
+      background: #007d82;
+    }
+    
+    /* Hero */
+    .hero {
+      height: 100vh;
+      background: url('your-hero-image.jpg') no-repeat center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 2s ease;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border-radius: 5px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      background: #007d82;
+    }
+    
+    /* About */
+    .about {
+      padding: 80px 10%;
+      background: var(--card-bg);
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .about h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: var(--accent);
+    }
+    .about-content {
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+      justify-content: center;
+    }
+    .about-content img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .about-content p {
+      flex: 1;
+      min-width: 250px;
+      font-size: 1.1rem;
+      color: var(--text-color);
+    }
+    .hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+              url('images/') no-repeat center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+}
+
+.hero-content {
+  animation: fadeIn 2s ease;
+}
+
+.hero-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 4px solid var(--accent);
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 2px solid var(--accent);
+}
+
+.btn.secondary:hover {
+  background: var(--accent);
+  color: #fff;
+}
+    /* Portfolio */
+    .portfolio {
+      padding: 80px 10%;
+      background: var(--bg-color);
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .portfolio h2 {
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: var(--accent);
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .project {
+      position: relative;
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+    }
+    .project img {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    /* Overlay effect */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0,0,0,0.75);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      transform: translateY(20px);
+    }
+    .overlay h3 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
+    .overlay p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    .project:hover .overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Resume */
+    .resume {
+      padding: 80px 10%;
+      text-align: center;
+      background: var(--card-bg);
+      transition: background 0.3s;
+    }
+    .resume h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: var(--accent);
+    }
+    
+    /* Contact */
+    .socials {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.socials img {
+  width: 45px;
+  height: 45px;
+  transition: transform 0.3s, filter 0.3s;
+  cursor: pointer;
+}
+
+.socials img:hover {
+  transform: scale(1.2);
+  filter: brightness(1) invert(0) sepia(1) saturate(5) hue-rotate(170deg);
+}
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Kopano Segole</div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+      <button class="toggle-btn" id="theme-toggle">Dark Mode</button>
+    </div>
+  </nav>
+<!-- Home / Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <img src="images/mi.jpeg" alt="Kopano Segole" class="hero-img">
+      <h1>Hello, I'm <span>Kopano Segole</span></h1>
+      <p>Aspiring Software Developer | Entrepreneur | Innovator</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn">Hire Me</a>
+        <a href="images/RESUME.pdf" download class="btn secondary">View Resume</a>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- About -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <img src="images/me.jpeg"Kopano Segole">
+      <p>
+        I’m a passionate and ambitious software development student from South Africa with a deep curiosity for
+        technology, entrepreneurship, and creativity.  
+        I’ve explored projects ranging from banking systems to web development and I’m committed to continuously
+        improving my craft.  
+        I’m also driven by personal growth – focusing on healthy living, discipline, and giving back to the
+        community.  
+        Beyond coding, I’m building a self-care brand, exploring investment opportunities, and always looking for
+        innovative ways to make a positive impact.  
+        My ultimate goal is to merge technology, business, and community upliftment into meaningful work.
+      </p>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="portfolio">
+    <h2>My Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <img src="images/bank.jpeg" alt="Project 1">
+        <div class="overlay">
+          <h3>Banking System (Java)</h3>
+          <p>A desktop banking application built in Java with features like account creation, login, loans, and airtime/electricity purchases.</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="images/port.jpeg" alt="Project 2">
+        <div class="overlay">
+          <h3>Portfolio Website</h3>
+          <p>A responsive personal portfolio website using HTML, CSS, and JavaScript with animations and a dark/light mode toggle.</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="images/candle.jpeg" alt="Project 3">
+        <div class="overlay">
+          <h3>K Aura Candle Brand</h3>
+          <p>A modern e-commerce style website mockup for a luxury self-care brand, featuring product displays and brand storytelling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume" class="resume">
+    <h2>Download My CV</h2>
+    <a href="images/RESUME.pdf" download class="btn">Download CV</a>
+  </section>
+
+  <!-- Contact -->
+
+<section id="contact" class="contact">
+  <h2>Contact Me</h2>
+  <p>Let’s connect and create something amazing together!</p>
+  <div class="socials">
+    <a href="https://linkedin.com" target="_blank">
+      <img src="images/link.jpeg" alt="LinkedIn">
+    </a>
+    <a href="https://github.com" target="_blank">
+      <img src="images/github.jpeg" alt="GitHub">
+    </a>
+    <a href="https://twitter.com" target="_blank">
+      <img src="images/twitter.jpeg" alt="Twitter">
+    </a>
+    <a href="mailto:your-email@example.com">
+      <img src="images/gmail.jpeg" alt="Email">
+    </a>
+  </div>
+</section>
+
+  <script>
+    // Dark/Light mode toggle
+    const toggleBtn = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    // Load saved theme
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark");
+      toggleBtn.textContent = "Light Mode";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      if (body.classList.contains("dark")) {
+        toggleBtn.textContent = "Light Mode";
+        localStorage.setItem("theme", "dark");
+      } else {
+        toggleBtn.textContent = "Dark Mode";
+        localStorage.setItem("theme", "light");
+      }
+    });
+
+    // Scroll fade-in effect
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          section.style.animation = "fadeIn 1.5s forwards";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
